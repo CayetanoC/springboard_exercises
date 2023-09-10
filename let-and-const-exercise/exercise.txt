@@ -1,0 +1,29 @@
+let and const Exercise
+
+In this exercise, you’ll refactor some ES5 code into ES2015.
+
+ES5 Global Constants
+
+var PI = 3.14;
+PI = 42; // stop me from doing this!
+
+
+ES2015 Global Constants
+
+* Write an ES2015 Version *
+const PI = 3.14;
+
+
+**Quiz**
+
+- What is the difference between ***var*** and ***let***?
+    The difference is that var lets you redeclare but let does not, and that var works in the function scope while let works in the block scope.
+
+- What is the difference between **var** and ***const***?
+    The difference is that var lets you redeclare and reassign a variable but const does not it only lets you mutate it and const works in the block scope while var works in the function scope.
+
+- What is the difference between **let** and **const**?
+    The difference between let and const is that let lets you reassign a variable while const does not.
+
+- What is hoisting?
+    Hoisting is the way JavaScript lifts its variables to the top var is the only one that can actually access the variable name and value before it is used later on.
