@@ -94,21 +94,6 @@ endGame(msg) {
   top.removeEventListener("click", this.handleGameClick);
 }
 
-placeInTable(y, x) {
-  const piece = document.createElement('div');
-  piece.classList.add('piece');
-  piece.style.backgroundColor = this.currPlayer.color;
-  piece.style.top = -50 * (y + 2) + 'px'; // Set the initial position above the board
-
-  const spot = document.getElementById(`${y}-${x}`);
-  spot.append(piece);
-
-  // Use a setTimeout to allow the piece to be initially rendered, then animate it down
-  setTimeout(() => {
-    piece.style.top = '0px'; // Animate the piece to its final position
-  }, 3000); // You can adjust the delay (100ms in this example) for the animation speed
-}
-
 /** handleClick: handle click of column top to play piece */
 
 handleClick(evt) {
