@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+    <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+    }
+
+    button {
+        width: 8rem;
+        padding: 4px;
+        background-color:	#FFDF00;
+        border-radius: 10px;
+        margin-top: 5px;
+    }
+
+    .remove {
+        font-size: 14px;
+        padding: 2px 5px;
+        margin-left: 10px;
+        width: 5rem;
+    }
+
+    #rating-list {
+        margin-top: 3rem;
+    }
+
+    .btn-container {
+        display: flex;
+        margin-top: 1rem;
+    }
+
+    .btn-container #btn-title {
+    margin-right: 20px;
+    }
+
+    .btn-container #btn-rating {
+    margin-left: 20px;
+    }
+
+    input {
+        margin: 5px;
+    }
+
+    li {
+        color: #FFFFFF;
+        font-size: 2rem;
+    }
+
+    body {
+        background: linear-gradient(gold, black);
+    }
+
+    </style>
+    <title>Movie App</title>
+</head>
+<body>
+   <h1 id="title">Rate a Movie</h1>
+    <form id="movie-ratings">
+        
+        <input class="movie" type="text" minlength="2" 
+        placeholder="Movie Name">
+        
+        <input class="rating" type="number" max="10" 
+        min="0" placeholder="Rating 0-10">
+        
+        <button id="btn-rate" type="submit">Rate</button>
+        
+        <div class="btn-container">
+        <button id="btn-title">Sort by Title</button> <button id="btn-rating">Sort by Rating</button>
+        </div>
+        <ol id="rating-list">
+
+        </ol>
+
+        <div></div>
+    </form>
+    
+    
+    
+    
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+
+$(document).ready(function() {
+    //keep track of the sorting orders for Names and ratings
+    let isSortingFromAZ = true; 
+    let isSortingFromRating = true; 
+
+
+    $('#btn-rate').on('click', function(e) {
+        e.preventDefault();
+        
+        let movieName = $('.movie').val();
+        let rating = parseFloat($('.rating').val());
+
+        if (movieName.trim().length < 2) {
+            alert("Movie name needs to be at least 2 characters.");
+            return;
+        }
+
+        if (isNaN(rating) || rating < 0 || rating > 10) {
+            alert("Rating should be a number from 0-10.");
+            return;
+        }
+
+        let listItem = $('<li>' + movieName + ' - Rating: ' + 
+            rating + ' <button class="remove">Remove</button></li>');
+
+        $('#rating-list').append(listItem);
+
+        $('.rating').val('');
+        $('.movie').val('');
+        $('.movie').focus();
+    });
+
+    $('#rating-list').on('click', 'button.remove', function() {
+        $(this).closest('li').remove();
+    });
+
+    $('#btn-title').on('click', function(e) {
+        e.preventDefault();
+        isSortingFromAZ = !isSortingFromAZ;
+
+        let items = $('#rating-list li').get();
+        items.sort(function(a, b) {
+            const comparison = isSortingFromAZ
+                ? $(a).text().localeCompare($(b).text())
+                : $(b).text().localeCompare($(a).text());
+            return comparison;
+        });
+
+        $('#rating-list').empty().append(items);
+    });
+
+    $('#btn-rating').on('click', function(e) {
+        e.preventDefault();
+        isSortingFromRating = !isSortingFromRating;
+
+        let items = $('#rating-list li').get();
+        items.sort(function(a, b) {
+            let ratingA = parseFloat($(a).text().match(/\d+/));
+            let ratingB = parseFloat($(b).text().match(/\d+/));
+            const comparison = isSortingFromRating
+                ? ratingA - ratingB
+                : ratingB - ratingA;
+            return comparison;
+        });
+
+        $('#rating-list').empty().append(items);
+    });
+});
+</script>
+</body>
+</html>
