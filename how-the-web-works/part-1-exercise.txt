@@ -1,0 +1,59 @@
+**Part One: Solidify Terminology**
+
+In your own terms, define the following terms:
+
+- What is HTTP?
+    The Hypertext Transfer Protocol is used for communication on the World Wide Web, It sets the rules for how requests and responses are exchanged between browsers and servers and is what allows us to see the webpages, images, videos and other things on our end instead of showing us the code that is on the server. It is a very important protocol and is what allows us to use the web as we know it today.
+
+- What is a URL?
+    URL stands for Uniform Resource locator and it is like an address that helps a computer find and display a webpage, the different parts of the address are important, theres the protocol which tells it how to communicate with the website, the www. stands for world wide web and tells it thats where you want to go look, the website name tells it you want to go to this address in the web, and anything following a / tells it a specific page you want to see, and after that it shows any query or information you sent to the page.
+
+- What is DNS?
+    Domain Name Systems are computers whose job is to change URL's into IP addresses that computers use to connect to websites, Its sort of like a phone book you look up the name and it gives you a number.
+
+- What is a query string?
+    A query string is part of a URL it goes at the end and is made up of key-value pairs, it is usually used to pass data from a web page to a server and is used a lot for searching for things in a web page.
+
+- What are two HTTP verbs and how are they different?
+    The two most common methods in HTTP are GET and POST, GET is usually used to retrieve information and it does not   change the server data, POST on the other hand is used to send data to the server to be processed and it usually changes the data on the server.
+
+- What is an HTTP request?
+    An HTTP request is a message sent from a web browser to a web server that contains information about what the browser wants and how the server should respond and this allows us to interact with web servers to be able to access web pages and other things.
+
+- What is an HTTP response?
+    An HTTP response is a message sent from the server to the web browser and it tells the browser how the request was handled and provides the requested data that the browser requested.
+
+- What is an HTTP header? Give a couple examples of request and response headers you have seen.
+    Headers are data that provide additional information about the message, they are included in the request and response and help both the client and server understand how to handle a request and response, some common headers I have seen are Date, content-type, content-length, server, and location.
+
+- What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+    -First it changes the address to an IP address so it can use it to communicate.
+    
+    -Then it connects to the IP address and uses the Protocol in this case HTTP to send a request to the webserver for the specific path of the address to let it know what you want to access
+
+    -The server then processes the request, finds the resource "page.html" and prepares the response
+
+    -The browser then receives the response and starts putting it all together and it starts to send out additional requests for things like stylesheets, images, and scripts and any other resource that may be on the page.
+
+    - Finally the browser finishes combining everything and displays the webpage with images, links and any other thing the webpage might have.
+
+**Part Two: Practice Tools**
+
+1. Using ***curl***, make a ***GET*** request to the *icanhazdadjoke.com* API to find all jokes involving the word “pirate”
+    curl "https://icanhazdadjoke.com/search?term=pirate"
+
+2. Use *dig* to find what the IP address is for *icanhazdadjoke.com*
+    dig https://icanhazdadjoke.com
+    
+
+3. Make a simple web page and serve it using ***python3 -m http.server***. Visit the page in a browser.
+    http://localhost:8000/simple-page.html
+
+**Part Three: Explore Dev Tools**
+
+Build a very simple HTML form that uses the GET method (it can use the same page URL for the action) when the form is submitted.
+
+Add a field or two to the form and, after submitting it, explore in Chrome Developer tools how you can view the request and response headers.
+
+Edit the page to change the form type to POST, refresh in the browser and re-submit. Do you still see the field in the query string? Explore in Chrome how you can view the request and response headers, as well as the form data.
+
