@@ -56,4 +56,4 @@ Build a very simple HTML form that uses the GET method (it can use the same page
 Add a field or two to the form and, after submitting it, explore in Chrome Developer tools how you can view the request and response headers.
 
 Edit the page to change the form type to POST, refresh in the browser and re-submit. Do you still see the field in the query string? Explore in Chrome how you can view the request and response headers, as well as the form data.
-
+    After changing from get to post you do not see the field in the query string it is now in the body, In Chrome you can view the headers by right-clicking on the page and selecting inspect then on the dev tools select networking and it shows you the headers there when you click on each request or response.
